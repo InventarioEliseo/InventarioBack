@@ -11,6 +11,21 @@ class VentaController {
     }
   }
 
+  async generateReport(fields) {
+    try {
+      const startOfMonth = new Date(`${fields.year1}-${fields.month1}-01T00:00:00Z`);
+      const endOfMonth = new Date(`${fields.year2}-${fields.month2}-01T00:00:00Z`);
+      console.log(startOfMonth);
+      console.log(endOfMonth);
+      console.log(startOfMonth<endOfMonth);
+      return await Venta.find({
+        createdAt: { $gte: startOfMonth, $lt: endOfMonth }
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
   async create(fields) {
     try {
       return await Venta.create(fields);

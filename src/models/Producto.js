@@ -19,6 +19,8 @@ const productoSchema = new Schema({
     required: true,
   },
   calidad: { type: Number, require: true },
+  categoria: { type: String, require: true },
+  cantidad: { type: Number, require: true},
   descripcion: { type: String, require: true },
   picture: { type: String, default: "" },
 }, { timestamps: true }

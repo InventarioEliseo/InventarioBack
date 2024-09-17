@@ -13,6 +13,16 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.post("/reporte", async (req, res, next) => {
+  try {
+    const payload = await Producto.generateReport(req.body);
+    const status = await http.status(payload);
+    res.status(status).json(payload);
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.post("/", async (req, res, next) => {
   try {
     const payload = await Producto.create(req.body);

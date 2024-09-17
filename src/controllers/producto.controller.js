@@ -11,6 +11,16 @@ class ProductoController {
     }
   }
 
+  async generateReport(fields) {
+    try {
+      return await Producto.find({
+        categoria: fields.categoria
+      });;
+    } catch (error) {
+      return error;
+    }
+  }
+
   async create(fields) {
     try {
       return await Producto.create(fields);
